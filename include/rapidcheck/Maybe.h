@@ -81,8 +81,7 @@ public:
   ~Maybe();
 
 private:
-  using Storage = typename std::aligned_storage<sizeof(T), alignof(T)>::type;
-  Storage m_storage;
+  alignas(T) unsigned char m_storage[sizeof(T)];
   bool m_initialized;
 };
 
