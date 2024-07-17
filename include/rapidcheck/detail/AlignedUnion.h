@@ -15,12 +15,5 @@ struct MaxOf<V1, V2, Vs...>
           std::size_t,
           (V1 > MaxOf<V2, Vs...>::value ? V1 : MaxOf<V2, Vs...>::value)> {};
 
-/// Replacement for std::aligned_union for compiles that do not have it.
-template <typename... Ts>
-struct alignas(MaxOf<alignof(Ts)...>::value) AlignedUnion
-{
-  unsigned char bytes[MaxOf<sizeof(Ts)...>::value];
-};
-
 } // namespace detail
 } // namespace rc

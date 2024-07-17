@@ -81,7 +81,7 @@ public:
   ~Maybe();
 
 private:
-  alignas(T) unsigned char m_storage[sizeof(T)];
+  alignas(T) uint8_t m_storage[sizeof(T)];
   bool m_initialized;
 };
 
